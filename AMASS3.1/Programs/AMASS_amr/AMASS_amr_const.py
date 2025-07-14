@@ -1,13 +1,13 @@
 #***-------------------------------------------------------------------------------------------------***#
-#*** AutoMated tool for Antimicrobial resistance Surveillance System version 3.0 (AMASS version 3.0) ***#
+#*** AutoMated tool for Antimicrobial resistance Surveillance System version 3.1 (AMASS version 3.1) ***#
 #*** CONST FILE and Configurations                                                                   ***#
 #***-------------------------------------------------------------------------------------------------***#
 # @author: PRAPASS WANNAPINIJ
-# Created on: 09 MAR 2023 
-# Updated on: 30 APR 2025 #Update software version
+# Created on: 09 MAR 2023
+# Last updated on: 15 JUL 2025
 import pandas as pd #for creating and manipulating dataframe
-CONST_SOFTWARE_RELEASE = "20 June 2025"
-CONST_SOFTWARE_BUILD = "3103"
+CONST_SOFTWARE_RELEASE = "15 Jul 2025"
+CONST_SOFTWARE_BUILD = "3104"
 CONST_SOFTWARE_MAJOR_VERSION = "3.1"
 CONST_SOFTWARE_VERSION =CONST_SOFTWARE_MAJOR_VERSION + " released on " + CONST_SOFTWARE_RELEASE
 CONST_SOFTWARE_VERSION_SHORT = CONST_SOFTWARE_MAJOR_VERSION +"B" + CONST_SOFTWARE_BUILD

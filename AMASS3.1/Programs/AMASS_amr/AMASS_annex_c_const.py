@@ -1,11 +1,11 @@
 
 #***-------------------------------------------------------------------------------------------------***#
-#*** AutoMated tool for Antimicrobial resistance Surveillance System version 3.0 (AMASS version 3.0) ***#
+#*** AutoMated tool for Antimicrobial resistance Surveillance System version 3.1 (AMASS version 3.1) ***#
 #*** CONST FILE and Configurations                                                                   ***#
 #***-------------------------------------------------------------------------------------------------***#
 # @author: CHALIDA RAMGSIWUTISAK
 # Created on: 30 AUG 2023
-# Last update on: 20 JUNE 2025 #v3.1 3102
+# Last update on: 15 JUL 2025 #3.1 3104
 import AMASS_amr_const as AC
 import pandas as pd #for creating and manipulating dataframe
 CONST_RUN_ANNEXC_WITH_NOHOSP = False
@@ -55,19 +55,19 @@ CONST_COL_NUMWARD = "Number_of_wards"
 CONST_PRENAME_PROFILEID = "profile_"
 CONST_VALUE_WARD = "ward"
 #values for ast_information.xlsx
-CONST_VALUE_PASSEDATB   ="P" #v3.1 3102
-CONST_VALUE_NOTPASSEDATB="F" #v3.1 3102
-CONST_VALUE_NOTTESTEDATB="-" #v3.1 3102
-CONST_VALUE_RESISTANT   ="R" #v3.1 3102
-CONST_VALUE_INTERMEDIATE="I" #v3.1 3102
-CONST_VALUE_SUSCEPTIBLE ="S" #v3.1 3102
-CONST_VALUE_NA        ="NA" #v3.1 3102
-CONST_VALUE_C1_1      ="C1:≥" #v3.1 3102
-CONST_VALUE_C1_2      ="%" #v3.1 3102
-CONST_VALUE_C2        ="C2:variation" #v3.1 3102
-CONST_VALUE_SUMMARY   ="Summary" #v3.1 3102
-lst_ris   = [CONST_VALUE_RESISTANT,CONST_VALUE_INTERMEDIATE,CONST_VALUE_SUSCEPTIBLE] #v3.1 3102
-lst_ris_na= [CONST_VALUE_RESISTANT,CONST_VALUE_INTERMEDIATE,CONST_VALUE_SUSCEPTIBLE,CONST_VALUE_NA] #v3.1 3102
+CONST_VALUE_PASSEDATB   ="P" #3.1 3102
+CONST_VALUE_NOTPASSEDATB="F" #3.1 3102
+CONST_VALUE_NOTTESTEDATB="-" #3.1 3102
+CONST_VALUE_RESISTANT   ="R" #3.1 3102
+CONST_VALUE_INTERMEDIATE="I" #3.1 3102
+CONST_VALUE_SUSCEPTIBLE ="S" #3.1 3102
+CONST_VALUE_NA        ="NA" #3.1 3102
+CONST_VALUE_C1_1      ="C1:≥" #3.1 3102
+CONST_VALUE_C1_2      ="%" #3.1 3102
+CONST_VALUE_C2        ="C2:variation" #3.1 3102
+CONST_VALUE_SUMMARY   ="Summary" #3.1 3102
+lst_ris   = [CONST_VALUE_RESISTANT,CONST_VALUE_INTERMEDIATE,CONST_VALUE_SUSCEPTIBLE] #3.1 3102
+lst_ris_na= [CONST_VALUE_RESISTANT,CONST_VALUE_INTERMEDIATE,CONST_VALUE_SUSCEPTIBLE,CONST_VALUE_NA] #3.1 3102
 #columns for profile_information.xlsx
 CONST_COL_NUMPROFILE_ALL="No. of patients with a clinical specimen culture positive"
 CONST_COL_NUMPROFILE_BLO="No. of patients with blood culture positive"
@@ -110,7 +110,7 @@ CONST_FILENAME_HO_DEDUP= "AnnexC_dedup_profile"
 CONST_FILENAME_ORIPARAM= ".\Programs\AMASS_amr\satscan_param.prm"
 CONST_FILENAME_NEWPARAM= "satscan_param"
 CONST_FILENAME_PROFILE = "profile_information"
-CONST_FILENAME_AST = "ast_information" #v3.1 3102
+CONST_FILENAME_AST = "ast_information" #3.1 3102
 CONST_FILENAME_LOCATION= "satscan_location"
 CONST_FILENAME_RESULT  = "satscan_results"
 CONST_FILENAME_INPUT   = "satscan_input"
@@ -167,6 +167,8 @@ dict_org = {"mrsa"     :["organism_staphylococcus_aureus",  "Methicillin-resista
 #For calling and naming specimens
 dict_spc = {"blo":"Blood specimen",
             "all":"All specimens"}
+# dict_spc = {"blo":"Blood specimens",
+#             "all":"All specimens"} #3.1 3103
 #For configuring parameters in SaTScan
 dict_configuration_prm = {"CaseFile="                               :"satscan_input_", 
                           "CoordinatesFile="                        :"satscan_location_", 
@@ -198,28 +200,8 @@ dict_configuration_prm_default = {"CaseFile="                               :"sa
 
 #For adding additional antibiotics for profiling
 #Able to add more antibiotics for organisms
-#1 antibiotic  >>> "organism_staphylococcus_aureus":[CONST_NEWVARNAME_PREFIX_RIS+"Cefoperazone_and_sulbactam"]
-#2 antibiotics >>> "organism_staphylococcus_aureus":[CONST_NEWVARNAME_PREFIX_RIS+"Cefoperazone_and_sulbactam",CONST_NEWVARNAME_PREFIX_RIS+"Trimethoprim"]
-# dict_configuration_astforprofile = {"organism_staphylococcus_aureus":[AC.CONST_NEWVARNAME_PREFIX_RIS+"Erythromycin", 
-#                                                                       AC.CONST_NEWVARNAME_PREFIX_RIS+"Ofloxacin",
-#                                                                       AC.CONST_NEWVARNAME_PREFIX_RIS+"Gentamicin",
-#                                                                       AC.CONST_NEWVARNAME_PREFIX_RIS+"Amikacin",
-#                                                                       AC.CONST_NEWVARNAME_PREFIX_RIS+"Sulfamethoxazole_and_trimethoprim",
-#                                                                       AC.CONST_NEWVARNAME_PREFIX_RIS+"Rifampicin",
-#                                                                       AC.CONST_NEWVARNAME_PREFIX_RIS+"Teicoplanin",
-#                                                                       AC.CONST_NEWVARNAME_PREFIX_RIS+"Daptomycin",
-#                                                                       AC.CONST_NEWVARNAME_PREFIX_RIS+"Linezolid",
-#                                                                       AC.CONST_NEWVARNAME_PREFIX_RIS+"Ceftaroline",
-#                                                                       AC.CONST_NEWVARNAME_PREFIX_RIS+"Piperacillin_and_tazobactam"],
-#                                     "organism_enterococcus_faecalis":[AC.CONST_NEWVARNAME_PREFIX_RIS+"Ciprofloxacin",
-#                                                                       AC.CONST_NEWVARNAME_PREFIX_RIS+"Levofloxacin",
-#                                                                       AC.CONST_NEWVARNAME_PREFIX_RIS+"Erythromycin",
-#                                                                       AC.CONST_NEWVARNAME_PREFIX_RIS+"Piperacillin_and_tazobactam"],
-#                                     "organism_enterococcus_faecium":[AC.CONST_NEWVARNAME_PREFIX_RIS+"Ciprofloxacin",
-#                                                                      AC.CONST_NEWVARNAME_PREFIX_RIS+"Levofloxacin",
-#                                                                      AC.CONST_NEWVARNAME_PREFIX_RIS+"Erythromycin",
-#                                                                      AC.CONST_NEWVARNAME_PREFIX_RIS+"Piperacillin_and_tazobactam"]}
-##will be added in the future
+#1 antibiotic  >>> "organism_staphylococcus_aureus":[[CONST_NEWVARNAME_PREFIX_RIS+"Cefoperazone_and_sulbactam",Cefoperazone/sulbactam]] #3.1 3103
+#2 antibiotics >>> "organism_staphylococcus_aureus":[[CONST_NEWVARNAME_PREFIX_RIS+"Cefoperazone_and_sulbactam",Cefoperazone/sulbactam],[CONST_NEWVARNAME_PREFIX_RIS+"Trimethoprim",Trimethoprim]] #3.1 3103
 dict_configuration_astforprofile = {"organism_staphylococcus_aureus":[[AC.CONST_NEWVARNAME_PREFIX_RIS+"Erythromycin", 
                                                                       AC.CONST_NEWVARNAME_PREFIX_RIS+"Ofloxacin",
                                                                       AC.CONST_NEWVARNAME_PREFIX_RIS+"Gentamicin",
@@ -295,7 +277,7 @@ dict_intermediate_configtosatscan={"satscan_analysis_type":{"Purely Spatial"    
                                                                      "Month"  :"2",
                                                                      "Day"    :"3", 
                                                                      "Generic":"4"}}
-#Color palette for AST #v3.1 3102
+#Color palette for AST #3.1 3102
 dict_ast_color = {CONST_VALUE_NA          :"#000000",
                   CONST_VALUE_RESISTANT   :"#E69F00",
                   CONST_VALUE_INTERMEDIATE:"#FDF150",

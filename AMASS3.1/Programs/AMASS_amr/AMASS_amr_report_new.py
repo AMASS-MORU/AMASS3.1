@@ -1,10 +1,11 @@
 #***-------------------------------------------------------------------------------------------------***#
-#*** AutoMated tool for Antimicrobial resistance Surveillance System version 3.0 (AMASS version 3.0) ***#
+#*** AutoMated tool for Antimicrobial resistance Surveillance System version 3.1 (AMASS version 3.1) ***#
 #***-------------------------------------------------------------------------------------------------***#
 # Aim: to enable hospitals with microbiology data available in electronic formats
 # to analyze their own data and generate AMR surveillance reports, Supplementary data indicators reports, and Data verification logfile reports systematically.
 
-# Created on 20th April 2022 (V2.0)
+# Created on 20 APR 2022
+# Last update on: 15 JUL 2025 #3.1 3104
 import math as m
 import gc 
 import psutil, os
@@ -203,7 +204,7 @@ def generatedby(c,logger):
     generatedby_1_2  = "AutoMated tool for Antimicrobial resistance Surveillance System (AMASS) version 3.1"
     generatedby_1_3  = "(released on " + AC.CONST_SOFTWARE_RELEASE +")"
     generatedby_1_5  = "AMASS application is available under the Creative Commons Attribution 4.0 International Public License (CC BY 4.0). The application can be downloaded at : <u><link href=\"https://www.amass.website\" color=\"blue\"fontName=\"Helvetica\">https://www.amass.website</link></u>"
-    generatedby_1_6  = "AMASS application used microbiology_data and hospital_admission_data files that are stored in the same folder as the application (AMASS.bat) to generate this report."
+    generatedby_1_6  = "AMASS application used microbiology data and hospital admission data files that are stored in the same folder as the application (AMASS.bat) to generate this report."
     generatedby_1_7  = "The goal of AMASS application is to enable hospitals with microbiology data available in electronic formats to analyze their own data and generate AMR surveillance reports promptly. If hospital admission date data are available, the reports will additionally be stratified by infection origin (community−origin or hospital−origin). If mortality data (such as patient discharge outcome data) are available, a report on mortality involving AMR infection will be added."
     generatedby_1_8  = "This automatically generated report has limitations, and requires users to understand those limitations and use the summary data in the report with careful interpretation."
     generatedby_1_9  = "A valid report could have local implications and much wider benefits if shared with national and international organizations."
@@ -268,8 +269,8 @@ def introduction(c,logger,startpage, lastpage, today=date.today().strftime("%d %
                 add_blankline + intro_page1_3, 
                 add_blankline + intro_page1_4]
     ##Page2
-    intro_page2_1_1 = "AMASS version 3.1 additionally generates reports on notifiable bacterial diseases in Annex A and on data indicators (including proportion of contaminants and discordant AST results) in Annex B for the \"microbiology_data\" file that is used to generate this report. A careful review of the Annex B could help readers and data owners to identify potential errors in the microbiology data used to generate the report."
-    intro_page2_1_2 = "AMASS version 3.1 also separately generates Supplementary data indictors report (in PDF and Excel formats) in a new folder “Report_with_patient_identifiers” to support users to check and validate records with notifiable bacteria, notifiable antibiotic-pathogen combinations, infrequent phenotypes or potential errors in the AST results at the local level. The identifiers listed include hospital number and specimen collection date. The files are generated in a separate folder “Report_with_patient_identifiers” so that it is clear that users should not share or transfer the Supplementary Data Indictors report (in PDF and Excel format) to any party outside of the hospital without data security management and confidential agreement."
+    intro_page2_1_1 = "AMASS version 3.1 additionally generates reports on notifiable bacterial diseases in Annex A and on data indicators (including proportion of contaminants and discordant AST results) in Annex B for the \"microbiology data\" file that is used to generate this report. A careful review of the Annex B could help readers and data owners to identify potential errors in the microbiology data used to generate the report." #3.1 3104
+    intro_page2_1_2 = "AMASS version 3.1 also separately generates Supplementary data indictors report (in PDF and Excel formats) in a new folder \"Report_with_patient_identifiers\" to support users to check and validate records with notifiable bacteria, notifiable antibiotic-pathogen combinations, infrequent phenotypes or potential errors in the AST results at the local level. The identifiers listed include hospital number and specimen collection date. The files are generated in a separate folder \"Report_with_patient_identifiers\" so that it is clear that users should not share or transfer the Supplementary Data Indictors report (in PDF and Excel format) to any party outside of the hospital without data security management and confidential agreement." #3.1 3104
     intro_page2_1 = [intro_page2_1_1, add_blankline + intro_page2_1_2]
     intro_page2_2_1 = "References:"
     intro_page2_2_2 = "[1] O'Neill J. (2014) Antimicrobial resistance: tackling a crisis for the health and wealth of nations. Review on antimicrobial resistance. http://amr−review.org. (accessed on 3 Dec 2018)."
@@ -303,7 +304,7 @@ def introduction(c,logger,startpage, lastpage, today=date.today().strftime("%d %
     c.drawPath(p, stroke=1, fill=1)
     canvas_printpage(c,startpage+1,lastpage,today,True,ipagemode,ssectionanme,isecmaxpage,startpage)
 def nodata_micro(c,stitle,startpage,lastpage,today,ipagemode=AC.CONST_REPORTPAGENUM_MODE,ssectionanme="",isecmaxpage=1):
-    page1_1_1 = "Not applicable because microbiology_data.xlsx file is not available or the format of microbiology_data file is not supported. Please save microbiology_data file in excel format (.xlsx) or csv (.csv; UTF-8)."
+    page1_1_1 = "Not applicable because microbiology data file is not available or the format of microbiology data file is not supported. Please save microbiology data file in excel format (.xlsx) or csv (.csv; UTF-8)." #3.1 3104
     page1_1 = [page1_1_1]
     ARC.report_title(c,stitle,1.07*inch, 10.5*inch,'#3e4444',font_size=16)
     ARC.report_context(c,page1_1, 1.0*inch, 8.5*inch, 460, 100, font_size=11)
@@ -316,7 +317,7 @@ def section2_nodata(c,startpage,lastpage,today=date.today().strftime("%d %b %Y")
     nodata_micro(c,'Section [2]: AMR proportion report',startpage,lastpage,today)
 
 def section3_nodata(c,startpage,lastpage,today=date.today().strftime("%d %b %Y"),ipagemode=AC.CONST_REPORTPAGENUM_MODE,ssectionanme="",isecmaxpage=1):
-    section3_page1_1_1 = "Proportions of antimicrobial−resistance infection stratified by origin of infection is not calculated because hospital admission date data is not available and infection origin variable is not available."
+    section3_page1_1_1 = "Proportions of antimicrobial−resistance infection stratified by origin of infection are not calculated because hospital admission date data is not available and infection origin variable is not available." #3.1 3104
     section3_page1_1 = [section3_page1_1_1] 
     ######### SECTION3: PAGE1 #########
     ARC.report_title(c,'Section [3]: AMR proportion report',1.07*inch, 10.5*inch,'#3e4444',font_size=16)
@@ -324,14 +325,14 @@ def section3_nodata(c,startpage,lastpage,today=date.today().strftime("%d %b %Y")
     ARC.report_context(c,section3_page1_1, 1.0*inch, 8.5*inch, 460, 100, font_size=11)
     canvas_printpage(c,startpage,lastpage,today,False,ipagemode,ssectionanme,isecmaxpage,startpage)
 def section4_nodata(c,startpage,lastpage,today=date.today().strftime("%d %b %Y"),ipagemode=AC.CONST_REPORTPAGENUM_MODE,ssectionanme="",isecmaxpage=1):
-    section4_page1_1_1 = "Incidence of infections per 100,000 tested population is not calculated because data on blood specimen with no growth is not available."
+    section4_page1_1_1 = "Incidence of infections per 100,000 tested population is not calculated because data on blood specimens with no growth is not available." #3.1 3104
     section4_page1_1 = [section4_page1_1_1]
     ######### SECTION4: PAGE1 #########
     ARC.report_title(c,'Report [4]: AMR frequency report',1.07*inch, 10.5*inch,'#3e4444',font_size=16)
     ARC.report_context(c,section4_page1_1, 1.0*inch, 8.5*inch, 460, 100, font_size=11)
     canvas_printpage(c,startpage,lastpage,today,False,ipagemode,ssectionanme,isecmaxpage,startpage) 
 def section5_nodata(c,startpage,lastpage,today=date.today().strftime("%d %b %Y"),ipagemode=AC.CONST_REPORTPAGENUM_MODE,ssectionanme="",isecmaxpage=1):
-    section5_page1_1_1 = "Incidence of infections per 100,000 tested population stratified by infection origin is not calculated because data on blood specimen with no growth is not available, or stratification by origin of infection cannot be done (due to hospital admission date variable is not available)."
+    section5_page1_1_1 = "Incidence of infections per 100,000 tested population stratified by infection origin is not calculated because data on blood specimens with no growth is not available, or stratification by origin of infection cannot be done (due to hospital admission date variable is not available)." #3.1 3104
     section5_page1_1 = [section5_page1_1_1]
     ######### SECTION5: PAGE1 #########
     ARC.report_title(c,'Report [5]: AMR frequency report',1.07*inch, 10.5*inch,'#3e4444',font_size=16)
@@ -339,7 +340,7 @@ def section5_nodata(c,startpage,lastpage,today=date.today().strftime("%d %b %Y")
     ARC.report_context(c,section5_page1_1, 1.0*inch, 8.5*inch, 460, 100, font_size=11)
     canvas_printpage(c,startpage,lastpage,today,False,ipagemode,ssectionanme,isecmaxpage,startpage)
 def section6_nodata(c,startpage,lastpage, today=date.today().strftime("%d %b %Y"),ipagemode=AC.CONST_REPORTPAGENUM_MODE,ssectionanme="",isecmaxpage=1):
-    section6_page1_1_1 = "Not applicable because hospital_admission_data.csv file is not available, or in−hospital outcome (in hospital_admission_data.csv file) is not available."
+    section6_page1_1_1 = "Mortality in AMR antimicrobial-susceptible infections is not applicable because hospital admission data file is not available, or in−hospital outcome (in hospital admission data file) is not available." #3.1 3104
     section6_page1_1 = [section6_page1_1_1]  
     ######### SECTION6: PAGE1 #########
     ARC.report_title(c,'Report [6] Mortality in AMR',1.07*inch, 10.5*inch,'#3e4444',font_size=16)
@@ -347,7 +348,7 @@ def section6_nodata(c,startpage,lastpage, today=date.today().strftime("%d %b %Y"
     ARC.report_context(c,section6_page1_1, 1.0*inch, 8.5*inch, 460, 100, font_size=11)
     canvas_printpage(c,startpage,lastpage,today,False,ipagemode,ssectionanme,isecmaxpage,startpage)  
 def annexA_nodata(c,startpage,lastpage, today=date.today().strftime("%d %b %Y"),ipagemode=AC.CONST_REPORTPAGENUM_MODE,ssectionanme="",isecmaxpage=1):
-    annexA_page1_1_1 = "Supplementary report on notifiable bacterial disease is not applicable because microbiology_data.xlsx file is not available."
+    annexA_page1_1_1 = "Supplementary report on notifiable bacterial disease is not applicable because microbiology data file is not available." #3.1 3104
     annexA_page1_1 = [annexA_page1_1_1]
     ######### ANNEXA: PAGE1 #########
     ARC.report_title(c,'Annex A: Supplementary report on notifiable bacterial',1.07*inch, 10.5*inch,'#3e4444',font_size=16)
@@ -356,22 +357,22 @@ def annexA_nodata(c,startpage,lastpage, today=date.today().strftime("%d %b %Y"),
     canvas_printpage(c,startpage,lastpage,today,False,ipagemode,ssectionanme,isecmaxpage,startpage) 
 def annexA11_nodata_mortality(c,startpage,lastpage, today=date.today().strftime("%d %b %Y"),ipagemode=AC.CONST_REPORTPAGENUM_MODE,ssectionanme="",isecmaxpage=1):
     ##Page1
-    annexA_page1_1_1 = "Notifiable bacterial for IPD is not applicable because hospital_admission_data.csv file is not available."
+    annexA_page1_1_1 = "Notifiable bacterial infections are not applicable because hospital admission data file is not available." #3.1 3104
     annexA_page1_1 = [annexA_page1_1_1]
     ######### ANNEXA: PAGE3 #########
-    ARC.report_title(c,'Annex A1.1: Notifiable bacterial infections for IPD',1.07*inch, 10.5*inch,'#3e4444',font_size=16)
+    ARC.report_title(c,'Annex A1b: Notifiable bacterial infections',1.07*inch, 10.5*inch,'#3e4444',font_size=16) #3.1 3104
     ARC.report_context(c,annexA_page1_1, 1.0*inch, 8.5*inch, 460, 100, font_size=11)
     canvas_printpage(c,startpage,lastpage,today,False,ipagemode,ssectionanme,isecmaxpage,startpage) 
 def annexA_nodata_mortality(c,startpage,lastpage, today=date.today().strftime("%d %b %Y"),ipagemode=AC.CONST_REPORTPAGENUM_MODE,ssectionanme="",isecmaxpage=1):
     ##Page1
-    annexA_page1_1_1 = "Mortality involving the notifiable bacterial diseases is not applicable because hospital_admission_data.csv file is not available, or in−hospital outcome (in hospital_admission_data.csv file) is not available."
+    annexA_page1_1_1 = "Mortality involving the notifiable bacterial diseases is not applicable because hospital admission data file is not available, or in−hospital outcome (in hospital admission data file) is not available." #3.1 3104
     annexA_page1_1 = [annexA_page1_1_1]
     ######### ANNEXA: PAGE3 #########
     ARC.report_title(c,'Annex A2: Mortality involving notifiable bacterial infections',1.07*inch, 10.5*inch,'#3e4444',font_size=16)
     ARC.report_context(c,annexA_page1_1, 1.0*inch, 8.5*inch, 460, 100, font_size=11)
     canvas_printpage(c,startpage,lastpage,today,False,ipagemode,ssectionanme,isecmaxpage,startpage) 
 def annexB_nodata(c,startpage,lastpage, today=date.today().strftime("%d %b %Y"),ipagemode=AC.CONST_REPORTPAGENUM_MODE,ssectionanme="",isecmaxpage=1):
-    annexB_page1_1_1 = "Supplementary report on data indicators is not applicable because microbiology_data.xlsx is not available, list_of_indicators.xlsx is not available, or number of observation is not estimated."
+    annexB_page1_1_1 = "Supplementary report on data indicators is not applicable because microbiology data file is not available, list of indicators is not available, or number of observation is not estimated." #3.1 3104
     annexB_page1_1 = [annexB_page1_1_1]
     ######### ANNEXB: PAGE1 #########
     ARC.report_title(c,"Annex B: Supplementary report on data indicators",1.07*inch, 10.5*inch,'#3e4444',font_size=16)
@@ -409,10 +410,10 @@ def section1(c,logger,bishosp_ava,section1_result, section1_table, startpage, la
     section1_page1_1_2 = "Please review and validate this section carefully before proceeds to the next section."
     section1_page1_1 = [section1_page1_1_1, 
                         add_blankline + section1_page1_1_2]
-    section1_page1_2_1 = "The microbiology_data file (stored in the same folder as the application file) had:"
+    section1_page1_2_1 = "The microbiology data file (stored in the same folder as the application file) had:" #3.1 3104
     section1_page1_2_2 = bold_blue_ital_op + blo_num + bold_blue_ital_ed + " specimen data records with collection dates ranging from "
     section1_page1_2_3 = bold_blue_ital_op + spc_date_start + bold_blue_ital_ed + " to " + bold_blue_ital_op + spc_date_end + bold_blue_ital_ed
-    section1_page1_2_4 = "The hospital_admission_data file (stored in the same folder as the application file) had:"
+    section1_page1_2_4 = "The hospital admission data file (stored in the same folder as the application file) had:" #3.1 3104
     section1_page1_2_5 = bold_blue_ital_op + hos_num + bold_blue_ital_ed + " admission data records with hospital admission dates ranging from "
     section1_page1_2_6 = bold_blue_ital_op + hos_date_start + bold_blue_ital_ed + " to " + bold_blue_ital_op + hos_date_end + bold_blue_ital_ed
     section1_page1_2_7 = "The total number of patient-days was " + bold_blue_ital_op + patient_days + bold_blue_ital_ed + "."
@@ -425,15 +426,15 @@ def section1(c,logger,bishosp_ava,section1_result, section1_table, startpage, la
                         iden1_op + "<i>" + section1_page1_2_6 + "</i>" + iden_ed,
                         iden1_op + add_blankline + section1_page1_2_7 + iden_ed,
                         iden1_op + add_blankline + section1_page1_2_8 + iden_ed]
-    section1_page1_3_1 = "[1] If the periods of the data in microbiology_data and hospital_admission_data files are not similar, " + \
+    section1_page1_3_1 = "[1] If the periods of the data in microbiology data and hospital admission data files are not similar, " + \
                         "the automatically−generated report should be interpreted with caution. " + \
-                        "AMASS generates the reports based on the available data."
+                        "AMASS generates the reports based on the available data." #3.1 3104
     section1_page1_3_2 = "[2] A patient is defined as at risk of BSI of hospital-origin when the patient is admitted to the hospital for more than two calendar days with calendar day one equal to the day of admission."
     section1_page1_3 = [green_op + section1_page1_3_1 + green_ed, 
                         green_op + section1_page1_3_2 + green_ed]
     ##Page2
-    section1_page2_1_1 = "Data was stratified by month to assist detection of missing data, and verification of whether the month distribution of data records in microbiology_data file and hospital_admission_data file reflected the microbiology culture frequency and admission rate of the hospital, respectively. " + \
-                        "For example if the number of specimens in the microbiology_data file reported below is lower than what is expected, please check the raw data file and data dictionary files."
+    section1_page2_1_1 = "Data was stratified by month to assist detection of missing data, and verification of whether the month distribution of data records in microbiology data file and hospital admission data file reflected the microbiology culture frequency and admission rate of the hospital, respectively. " + \
+                        "For example if the number of specimens in the microbiology data file reported below is lower than what is expected, please check the raw data file and data dictionary files." #3.1 3104
     section1_page2_1 = [section1_page2_1_1]
     section1_page2_2_1 = "[1] Additional general demographic data will be made available in the next version of AMASS application."
     section1_page2_2 = [green_op + section1_page2_2_1 + green_ed]
@@ -476,9 +477,9 @@ def section2(c,logger,result_table, summary_table, lst_org_format,lst_numpat, ls
     blo_num_pos     = str(result_table.loc[result_table["Parameters"]=="Number_of_blood_culture_positive","Values"].tolist()[0])
     blo_num_pos_org = str(result_table.loc[result_table["Parameters"]=="Number_of_blood_culture_positive_for_organism_under_this_survey","Values"].tolist()[0])
     ##Page1
-    section2_page1_1_1 = "An AMR proportion report is generated by default, even if the hospital_admission_data file is unavailable. "+ \
+    section2_page1_1_1 = "An AMR proportion report is generated by default, even if the hospital admission data file is unavailable. "+ \
                         "This is to enable hospitals with only microbiology data available to utilize the de−duplication and report generation functions of AMASS. " + \
-                        "This report is without stratification by origin of infection."
+                        "This report is without stratification by origin of infection." #3.1 3104
     section2_page1_1_2 = "The report generated by AMASS application version 3.1 includes only blood samples. " + \
                         "The next version of AMASS will include other specimen types, including cerebrospinal fluid (CSF), urine, stool, and other specimens."
     section2_page1_1 = [section2_page1_1_1, 
@@ -487,17 +488,17 @@ def section2(c,logger,result_table, summary_table, lst_org_format,lst_numpat, ls
     section2_page1_2 = []
     for i in range(len(lst_org_format)):
         section2_page1_2.append(iden1_op + "− " + lst_org_format[i] + iden_ed)
-    section2_page1_3_1 = "The microbiology_data file had:"
+    section2_page1_3_1 = "The microbiology data file had:" #3.1 3104
     section2_page1_3_2 = "Sample collection dates ranged from " + \
                         bold_blue_ital_op + spc_date_start + bold_blue_ital_ed + " to " + bold_blue_ital_op + spc_date_end + bold_blue_ital_ed
     section2_page1_3_3 = "Number of records of blood specimens collected within the above date range:"
-    section2_page1_3_4 = blo_num + " blood specimens records"
+    section2_page1_3_4 = blo_num + " blood specimen records" #3.1 3104
     section2_page1_3_5 = "Number of records of blood specimens with *negative culture (no growth):"
-    section2_page1_3_6 = blo_num_neg + " blood specimens records"
+    section2_page1_3_6 = blo_num_neg + " blood specimen records" #3.1 3104
     section2_page1_3_7 = "Number of records of blood specimens with culture positive for a microorganism:"
-    section2_page1_3_8 = blo_num_pos + " blood specimens records"
+    section2_page1_3_8 = blo_num_pos + " blood specimen records" #3.1 3104
     section2_page1_3_9 = "Number of records of blood specimens with culture positive for organism under this surveillance:"
-    section2_page1_3_10 = blo_num_pos_org + " blood specimens records"
+    section2_page1_3_10 = blo_num_pos_org + " blood specimen records" #3.1 3104
     section2_page1_3 = [section2_page1_3_1, 
                         iden1_op + "<i>"             + section2_page1_3_2 + "</i>" + iden_ed, 
                         iden1_op + "<i>"             + section2_page1_3_3 + "</i>" + iden_ed, 
@@ -511,7 +512,7 @@ def section2(c,logger,result_table, summary_table, lst_org_format,lst_numpat, ls
     ##Page2
     section2_page2_1_1 = "AMASS application de−duplicated the data by including only the first isolate per patient per specimen type per evaluation period as described in the method. " + \
                         "The number of patients with positive samples is as follows:"
-    section2_page2_2_1 = "*The negative culture included data values specified as 'no growth' in the dictionary_for_microbiology_data file (details on data dictionary files are in the method section) to represent specimens with negative culture for any microorganism. "
+    section2_page2_2_1 = "*The negative culture included data values specified as \"no growth\" in the dictionary file for microbiology data (details on data dictionary files are in the method section) to represent specimens with negative culture for any microorganism. " #3.1 3104
     section2_page2_2_2 = "**Only the first isolate for each patient per specimen type, per pathogen, and per evaluation period was included in the analysis."
     section2_page2_3_1 = "The following figures and tables show the proportion of patients with blood culture positive for antimicrobial non−susceptible isolates."
     if AC.CONST_MODE_R_OR_AST  != AC.CONST_VALUE_MODE_AST:
@@ -687,10 +688,10 @@ def section3(c,logger,sec3_res, sec3_pat_val,lst_org_format, lst_numpat_CO,lst_n
                         iden2_op + bold_blue_ital_op + section3_page1_2_10 + bold_blue_ital_ed + iden_ed]
     ##Page2
     section3_page2_1_1 = "NA=not applicable (hospital admission date or infection origin data are not available)"
-    section3_page2_1_2 = "*Only the first isolate for each patient per specimen type per pathogen under the reporting period is included in the analysis. Please refer to Section [2] for details on how this number was calculated from the raw microbiology_data file."
+    section3_page2_1_2 = "*Only the first isolate for each patient per specimen type per pathogen under the reporting period is included in the analysis. Please refer to Section [2] for details on how this number was calculated from the raw microbiology data file." #3.1 3104
     section3_page2_1_3 = "**The definitions of infection origin proposed by the WHO GLASS is used. In brief, community−origin BSI was defined as patients in the hospital for less than or equal to two calendar days when the first blood culture positive for the pathogen was taken."
     section3_page2_1_4 = "Hospital−origin BSI was defined as patients admitted for more than two calendar days when the first specimen culture positive for the pathogen was taken."
-    section3_page2_1_5 = "Please refer to the 'Methods' section for more details on the definitions used."
+    section3_page2_1_5 = "Please refer to the \"Methods\" section for more details on the definitions used." #3.1 3104
     section3_page2_1_6 = "***Unknown origin could be because admission date data are not available or the patient was not hospitalised."
     section3_page2_1 = [green_op + section3_page2_1_1 + green_ed, 
                         green_op + add_blankline + section3_page2_1_2 + green_ed, 
@@ -816,12 +817,12 @@ def section4(c,logger,result_table, result_blo_table, result_pat_table,sec4_pat,
     ##Page1
     section4_page1_1_1 = "For each pathogen and antibiotic under surveillance, the frequencies of patients with new infections are calculated per 100,000 tested patients."
     section4_page1_1 = [section4_page1_1_1]
-    section4_page1_2_1 = "The microbiology_data file had:"
+    section4_page1_2_1 = "The microbiology data file had:" #3.1 3104
     section4_page1_2_2 = "<i>" + "Specimen collection dates ranged from " +"</i>" +\
                         bold_blue_ital_op + spc_date_start + bold_blue_ital_ed + \
                         "<i>" + " to " + "</i>" + \
                         bold_blue_ital_op + spc_date_end + bold_blue_ital_ed
-    section4_page1_2_3 = "Number of records on blood specimen collected within the above date range:"
+    section4_page1_2_3 = "Number of records on blood specimens collected within the above date range:" #3.1 3104
     section4_page1_2_4 = blo_num +" blood specimen records"
     section4_page1_2_5 = "*Number of patients sampled for blood culture within the above date range:"
     section4_page1_2_6 = pat_num_pos_blo + " patients sampled for blood culture"
@@ -915,7 +916,7 @@ def section5(c,logger,result_table, result_com_table, result_hos_table, result_c
                         bold_blue_ital_op + spc_date_start + bold_blue_ital_ed + \
                         " to " + \
                         bold_blue_ital_op + spc_date_end + bold_blue_ital_ed
-    section5_page1_2_3 = "Number of records on blood specimen collected within the above date range:"
+    section5_page1_2_3 = "Number of records on blood specimens collected within the above date range:" #3.1 3104
     section5_page1_2_4 = blo_num + " blood specimen records"
     section5_page1_2_5 = "Number of patients sampled for blood culture within the above date range:"
     section5_page1_2_6 = pat_num_pos_blo + " patients sampled for blood culture"
@@ -1070,8 +1071,8 @@ def section6(c,logger,result_table, sec6_mor, result_mor_table,list_sec6_mor_tbl
     section6_page1_1_1 = "A surveillance report on mortality involving AMR infections and antimicrobial−susceptible infections with stratification by origin of infection is generated only if data on patient outcomes (i.e. discharge status) are available. " + \
                     "Antimicrobial−resistant infection is a threat to modern health care, and the impact of the infection on patient outcomes is largely unknown. " + \
                     "Performing analyses and generating reports on mortality often takes time and resources."
-    section6_page1_1_2 = "The term 'mortality involving AMR and antimicrobial−susceptible infections was used because the mortality reported was all−cause mortality. " + \
-                        "This measure of mortality included deaths caused by or related to other underlying and intermediate causes."
+    section6_page1_1_2 = "The term \"mortality involving AMR and antimicrobial−susceptible infections\" was used because the mortality reported was all−cause mortality. " + \
+                        "This measure of mortality included deaths caused by or related to other underlying and intermediate causes." #3.1 3104
     section6_page1_1_3 = "Here, AMASS summarized the overall mortality of patients with antimicrobial−resistant and antimicrobial−susceptible bacteria bloodstream infections (BSI)."
     section6_page1_1 = [section6_page1_1_1, 
                         add_blankline + section6_page1_1_2, 
@@ -1296,7 +1297,7 @@ def annexA_A1(c,logger,result_table, org_table, pat_table,result_table_A11,  pat
     oth_num_pos_plus= result_table.loc[result_table["Parameters"]=="Number_of_others_culture_positive","Values"].tolist()[0]
     
     ##Page1
-    #annexA_page1_1_1 = "This supplementary report has two parts; including (A1) notifiable bacterial infections and (A2) mortality involving notifiable bacterial infections. The AMR proportion notifiable bacterial infections supplementary report is generated by default, even if the hospital_admission_data file is unavailable. This is to enable hospitals with only microbiology data available to utilize the de-duplication and report generation functions of AMASS."
+    #annexA_page1_1_1 = "This supplementary report has two parts; including (A1) notifiable bacterial infections and (A2) mortality involving notifiable bacterial infections. The AMR proportion notifiable bacterial infections supplementary report is generated by default, even if the hospital admission data file is unavailable. This is to enable hospitals with only microbiology data available to utilize the de-duplication and report generation functions of AMASS."
     annexA_page1_1_1 = "This supplementary report has two parts; including (A1) notifiable bacterial infections and (A2) mortality involving notifiable bacterial infections."
     annexA_page1_1_2 = "Please note that the completion of this supplementary report is strongly dependent on the availability of data (particularly, data of all bacterial pathogens and all specimen types) and the completion of the data dictionary files to make sure that AMASS can understand each notifiable bacterium and each type of specimen."
     #annexA_page1_1_3 = "Annex A includes various type of specimens including blood, cerebrospinal fluid (CSF), respiratory tract specimens, urine, genital swab, stool and other or unknown sample types. The microorganisms in this report were initially selected from common notifiable bacterial diseases in Thailand."
@@ -1310,7 +1311,7 @@ def annexA_A1(c,logger,result_table, org_table, pat_table,result_table_A11,  pat
     annexA_page1_2_1 = "Note: The list of notifiable bacteria included in AMASS was generated based on the literature review and the collaboration with Department of Disease Control, Ministry of Public Health, Thailand. The list could be expanded or modified in future versions of AMASS.."
     annexA_page1_2 = [green_op + annexA_page1_2_1 + green_ed]
     ##Page2
-    annexA_page2_1_1 = "The microbiology_data file had:"
+    annexA_page2_1_1 = "The microbiology data file had:" #3.1 3104
     annexA_page2_1_2 = "Specimen collection dates ranged from " + \
                         bold_blue_ital_op + str(spc_date_start) + bold_blue_ital_ed + \
                         "  to  " + \
@@ -1329,7 +1330,7 @@ def annexA_A1(c,logger,result_table, org_table, pat_table,result_table_A11,  pat
                     add_blankline + annexA_page2_1_5]
     annexA_page2_2_1 = "*Some patients may have more than one type of specimen culture positive for a notifiable bacterium. Some patients may have clinical specimens culture positive for multiple notifiable bacteria. Some patients may not be hospitalized at the survey hospital during the evaluation period."
     annexA_page2_2_2 = "CSF = Cerebrospinal fluid; RTS = Respiratory tract specimens; Others = Other or unknown sample types; NA = Not applicable (i.e. the specimen type is not available or identified in the microbiology data file)"
-    #annexA_page2_2_3 = "NA = Not applicable (i.e. the specimen type is not available or identified in the microbiology_data file)"
+    #annexA_page2_2_3 = "NA = Not applicable (i.e. the specimen type is not available or identified in the microbiology data file)"
     #annexA_page2_2 = [annexA_page2_2_1,
     #                annexA_page2_2_2, 
     #                annexA_page2_2_3]
@@ -1403,7 +1404,7 @@ def annexA_A1(c,logger,result_table, org_table, pat_table,result_table_A11,  pat
                         add_blankline + annexA_page2_A11_1_5]
         annexA_page2_A11_2_1 = "*Some patients may have more than one type of specimen culture positive for a notifiable bacterium. Some patients may have clinical specimens culture positive for multiple notifiable bacteria."
         annexA_page2_A11_2_2 = "Some patients may have the data of a clinical specimen culture positive for a notifiable bacterium in the microbiology data file, but do not have the data of admission dates, discharge dates and/or patient outcomes in the hospital admission data file. That is the most common cause of the discrepancy between total number of patients with notifiable bacterial infections presented in the Annex A1a, A1b and A2 (followed by typos in patient identifiers in either data file)."
-        annexA_page2_A11_2_3 = "CSF = Cerebrospinal fluid; RTS = Respiratory tract specimens; Others = Other or unknown sample types; NA = Not applicable (i.e. the specimen type is not available or identified in the microbiology_data file)"
+        annexA_page2_A11_2_3 = "CSF = Cerebrospinal fluid; RTS = Respiratory tract specimens; Others = Other or unknown sample types; NA = Not applicable (i.e. the specimen type is not available or identified in the microbiology data file)" #3.1 3104
         annexA_page2_A11_2 = [annexA_page2_A11_2_1,
                         annexA_page2_A11_2_2, 
                         annexA_page2_A11_2_3]
@@ -1449,14 +1450,14 @@ def annexB(c,logger,blo_table, blo_table_bymonth, startpage,lastpage, today=date
     add_blankline = "<br/>"
     ##variables
     ##Page1
-    annexB_page1_1_1 = "This supplementary report is generated by default, even if the hospital_admission_data file is unavailable. The management of clinical and laboratory practice can be supported by some data indictors such as blood culture contamination rate, proportion of notifiable antibiotic-pathogen combinations, and proportion of isolates with infrequent phenotypes or potential errors in AST results. Isolates with infrequent phenotypes or potential errors in AST results include (a) reports of organisms which are intrinsically resistant to an antibiotic but are reported as susceptible and (b) reports of organisms with discordant AST results. "
+    annexB_page1_1_1 = "This supplementary report is generated by default, even if the hospital admission data file is unavailable. The management of clinical and laboratory practice can be supported by some data indictors such as blood culture contamination rate, proportion of notifiable antibiotic-pathogen combinations, and proportion of isolates with infrequent phenotypes or potential errors in AST results. Isolates with infrequent phenotypes or potential errors in AST results include (a) reports of organisms which are intrinsically resistant to an antibiotic but are reported as susceptible and (b) reports of organisms with discordant AST results. " #3.1 3104
     annexB_page1_1_2 = "This supplementary report could support the clinicians, policy makers and the laboratory staff to understand their summary data quickly. The laboratory staff could also use \"Supplementary_data_indicators_report.pdf\" generated in the folder \"Report_with_patient_identifiers\" to check and validate individual data records further. "
     annexB_page1_1_3 = "<b>This supplementary report was estimated from data of blood specimens only.</b> Please note that the data indicators do not represent quality of the clinical or laboratory practice."
     annexB_page1_1 = [annexB_page1_1_1, 
                     add_blankline + annexB_page1_1_2, 
                     add_blankline + annexB_page1_1_3]
 
-    annexB_page1_2_1 = "*Blood culture contamination rate is defined as the number of raw contaminated cultures per number of blood cultures received by the laboratory per reporting period. Blood culture contamination rate will not be estimated in case that the data of negative culture (specified as 'no growth' in the dictionary_for_microbiology_data file) is not available. "
+    annexB_page1_2_1 = "*Blood culture contamination rate is defined as the number of raw contaminated cultures per number of blood cultures received by the laboratory per reporting period. Blood culture contamination rate will not be estimated in case that the data of negative culture (specified as \"no growth\" in the dictionary file for microbiology data) is not available. " #3.1 3104
     annexB_page1_2_2 = "**Notifiable antibiotic-pathogen combinations and their classifications are defined as WHO list of AMR priority pathogen published in 2017. "
     annexB_page1_2_3 = "**, ***The proportion is estimated per number of blood specimens culture positive for any organisms with AST result in the raw microbiology data. "
     annexB_page1_2_4 = "*, **, ***Details of the criteria are available in Table 3 and Table 4 of \"Supplementary_data_indicators_report.pdf\", and \"list_of_indicators.xlsx\" in the folder \"Configuration\". "
@@ -1500,12 +1501,12 @@ def method(c,logger,lst_org_format,startpage,lastpage, today=date.today().strfti
     method_page1_4 = "<b>" + "− Computer with Microsoft Windows 7 or higher" + "</b>"
     method_page1_5 = "AMASS may work in other versions of Microsoft Windows and other operating systems. " + \
                      "However, thorough testing and adjustment have not been performed."
-    method_page1_6 = "<b>" + "− AMASSv3.1.zip package file" + "</b>"
+    method_page1_6 = "<b>" + "− AMASS3.1.zip package file" + "</b>" #3.1 3104
     method_page1_7 = "AMASS application is to be downloaded from " + "<u><link href=\"https://www.amass.website\" color=\"blue\"fontName=\"Helvetica\">https://www.amass.website</link></u>" + ", and unzipped to generate an AMASS folder that could be stored under any folder in the computer. " + \
-                    "AMASS folder contains 4 files (AMASS.bat, dictionary_for_microbiology_data.xlsx, dictionary_for_hospital_admission_data.xlsx, and dictionary_for_wards.xlsx), and 6 folders (Configuration, Example_Dataset_1_WHONET, Example_Dataset_2, Example_Dataset_3_longformat, Example_dataset_4_cluster_signals, and Programs)."
-    method_page1_8 = "<b>" + "− Microbiology data file (microbiology_data in .csv or .xlsx file format)" + "</b>"
+                    "AMASS folder contains 4 files (AMASS.bat, dictionary_for_microbiology_data.xlsx, dictionary_for_hospital_admission_data.xlsx, and dictionary_for_wards.xlsx), and 6 folders (Configuration, Example_dataset_1_WHONET, Example_dataset_2, Example_dataset_3_long_format, Example_dataset_4_cluster_signals, and Programs)." #3.1 3104
+    method_page1_8 = "<b>" + "− Microbiology data file (microbiology data in .csv or .xlsx file format)" + "</b>" #3.1 3104
     method_page1_9 = "The user needs to obtain microbiology data, and then copy & paste this data file into the same folder as AMASS.bat file."
-    method_page1_10 = "<b>" + "− [Optional] Hospital admission data file (hospital_admission_data in .csv or .xlsx file format)" + "</b>"
+    method_page1_10 = "<b>" + "− [Optional] Hospital admission data file (hospital admission data in .csv or .xlsx file format)" + "</b>" #3.1 3104
     method_page1_11 = "If available, the user could obtain hospital admission data, and then copy & paste this data file into the same folder as AMASS.bat file."
     method_page1_12 = add_blankline + "<b>" + "Not required:" + "</b>"
     method_page1_13 = "<b>" + "− Internet to run AMASS application" + "</b>"
@@ -1517,20 +1518,20 @@ def method(c,logger,lst_org_format,startpage,lastpage, today=date.today().strfti
                     method_page1_11, method_page1_12, method_page1_13, method_page1_14]
     ##Page2
     method_page2_1_1 = "<b>" + "− Python" + "</b>"
-    method_page2_1_2 = "The download package (AMASSv3.1.zip) included Python portable and their libraries that AMASS application requires. " + \
+    method_page2_1_2 = "The download package (AMASS3.1.zip) included Python portable and their libraries that AMASS application requires. " + \
                       "The user does not need to install any programme before using AMASS. " + \
                       "The user also does not have to uninstall Python if the computer already has the programme installed. " + \
-                      "The user does not need to know how to use Python."
+                      "The user does not need to know how to use Python." #3.1 3104
     method_page2_1_3 = "<b>" + "− SaTScan" + "</b>"
-    method_page2_1_4 = "The download package (AMASSv3.1.zip) included batch SaTScan. " + \
-                      "The user does not need to install SaTScan or any programme before using AMASSv3.1. " + \
+    method_page2_1_4 = "The download package (AMASS3.1.zip) included batch SaTScan. " + \
+                      "The user does not need to install SaTScan or any programme before using AMASS3.1. " + \
                       "The user does not need to know how to use SaTScan. " + \
-                      "The user can configurate and edit the parameter values to run the cluster detection analyses through the file provided under the Configuration folder. "
+                      "The user can configurate and edit the parameter values to run the cluster detection analyses through the file provided under the Configuration folder. " #3.1 3104
     method_page2_1 = [method_page2_1_1, method_page2_1_2, method_page2_1_3, method_page2_1_4]
 
     method_page2_2_1 = add_blankline + green_op + "<b>" + "Note:" + "</b>" + green_ed
     method_page2_2_2 = green_op + "[1] Please ensure that the file names of microbiology data file (microbiology_data) and the hospital admission data file (hospital_admission_data) are identical to what is written here. " + \
-                       "Please make sure that all are lower−cases with an underscore '_' at each space." + green_ed
+                       "Please make sure that all are lower−cases with an underscore \"_\" at each space." + green_ed #3.1 3104
     method_page2_2_3 = green_op + "[2] Please ensure that both microbiology and hospital admission data files have no empty rows. " + \
                        "For example, please do not add an empty row before the row of the variable names, which are the first row in both files)." + green_ed
     method_page2_2_4 = green_op + "[3] For the first run, a user may need to fill the data dictionary files to make sure that AMASS application understands your variable names and values." + green_ed
@@ -1550,21 +1551,21 @@ def method(c,logger,lst_org_format,startpage,lastpage, today=date.today().strfti
     method_page2 = method_page2_1 + method_page2_2 + method_page2_3
 
     ##Page3
-    method_page3_1_1 = "To detect spatio-temporal clusters of antimicrobial resistant bacterial species, AMASS-SaTScan used the retrospective space-time uniform model of the SaTScan (http://www.satscan.org). " + \
+    method_page3_1_1 = "To detect spatio-temporal clusters of antimicrobial resistant bacterial species, AMASS-SaTScan used the retrospective space-time uniform model of the SaTScan (<u><link href=\"https://www.satscan.org\" color=\"blue\"fontName=\"Helvetica\">https://www.satscan.org</link></u>). " + \
                        "The cluster detection was based on the first hospital-origin resistant isolate per organism per patient per evaluation period. " + \
                        "Analyses were conducted separately for each of the seven species-groups, including MRSA, VREfs, VREfm, CREC, CRKP, CRPA, and CRAB identified from blood specimens only and from all types of specimens. " + \
-                       "Both ward names (or ward identifiers) and resistant profiles were defined as “location” in the SaTScan to allow the detection of spatio-temporal cluster of periods with a higher than the expected frequency of a specific resistance profile. " + \
+                       "Both ward names (or ward identifiers) and resistant profiles were defined as \"location\" in the SaTScan to allow the detection of spatio-temporal cluster of periods with a higher than the expected frequency of a specific resistance profile. " + \
                        "AMASS-SaTScan assumed that each ward was independent. " + \
                        "In case that the ward name variable is not available (or some of the ward names are not filled in the dictionary file for wards), the whole hospital (or the wards that had no data in the dictionary files for wards) would be considered as a single space. " + \
                        "The total resistance isolates were used as the denominator. " + \
-                       "Hypothesis testing was conducted using Monte Carlo simulations."
+                       "Hypothesis testing was conducted using Monte Carlo simulations." #3.1 3104
     method_page3_1_2 = add_blankline + "<b>" + "How to use data dictionary files" + "</b>"
     method_page3_1_3 = "In cases when variable names in the microbiology and hospital admission data files were not the same as the one that AMASS used, the data dictionary files could be edited. " + \
                     "The raw microbiology and hospital admission data files were to be left unchanged. " + \
                     "The data dictionary files provided could be edited and re−used automatically when the microbiology and hospital admission data files were updated and AMASS.bat were to be double−clicked again (i.e. the data dictionary files would allow the user to re−analyze data files without the need to adjust variable names and data value again every time)."
     method_page3_1_4 = add_blankline + "For example:"
-    method_page3_1_5 = "If variable name for 'hospital number' is written as 'hn' in the raw data file, the user would need to add 'hn' in the cell next to 'hospital_number'. " + \
-                    "If data value for blood specimens is defined by 'Blood−Hemoculture' in the raw data file, then the user would need to add 'Blood−Hemoculture' in the cell next to 'blood_specimen'."
+    method_page3_1_5 = "If variable name for \"hospital number\" is written as \"hn\" in the raw data file, the user would need to add \"hn\" in the cell next to \"hospital_number\". " + \
+                    "If data value for blood specimens is defined by \"Blood−Hemoculture\" in the raw data file, then the user would need to add \"Blood−Hemoculture\" in the cell next to \"blood_specimen\"." #3.1 3104
     method_page3_1 = [method_page3_1_1, method_page3_1_2, method_page3_1_3, method_page3_1_4, method_page3_1_5]
     ##Page4
     method_page4_1 = ["<b>" + "Dictionary file (dictionary_for_microbiology_data.xlsx) may show up as in the table below:" + "</b>"]
@@ -1581,7 +1582,7 @@ def method(c,logger,lst_org_format,startpage,lastpage, today=date.today().strfti
                 ["hospital_number", "hn", "Required"], 
                 ["Values described in AMASS", "Values used in your \n microbiology data file", "Requirements"], 
                 ["blood_specimen", "Blood−Hemoculture", "Required"]]
-    method_page4_3 = ["Then, save the file. For every time the user double−clicked AMASS.bat, the application would know that the variable named 'hn' is similar to 'hospital_number' and represents the patient identifier in the analysis."]
+    method_page4_3 = ["Then, save the file. For every time the user double−clicked AMASS.bat, the application would know that the variable named \"hn\" is similar to \"hospital_number\" and represents the patient identifier in the analysis."] #3.1 3104
     
     ##Page5
     method_page5_1 = ["<b>" + "Organisms included for the AMR Surveillance Report:" + "</b>"] 
@@ -1598,8 +1599,8 @@ def method(c,logger,lst_org_format,startpage,lastpage, today=date.today().strfti
     method_page5_5_1 = "<b>" + "Definitions:" + "</b>"
     method_page5_5_2 = "The definitions of infection origin proposed by the WHO GLASS was used [1]. In brief, community−origin bloodstream infection (BSI) was defined for patients in the hospital within the first two calendar days of admission when the first blood culture positive specimens were taken. " + \
                     "Hospital−origin BSI was defined for patients in the hospital longer than the first two calendar days of admission when the first blood culture positive specimens were taken. " + \
-                    "In cases when the user had additional data on infection origin defined by infection control team or based on referral data, the user could edit the data dictionary file (variable name \'infection_origin\') and AMASS application would use the data of that variable to stratify the data by origin of infection instead of the above definition. " + \
-                    "However, in cases when data on infection origin were not available (as in many hospitals in LMICs), the above definition would be calculated based on admission date and specimen collection date (with cutoff of 2 calendar days) and used to classify infections as community−origin or hospital−origin."
+                    "In cases when the user had additional data on infection origin defined by infection control team or based on referral data, the user could edit the data dictionary file (variable name \"infection_origin\") and AMASS application would use the data of that variable to stratify the data by origin of infection instead of the above definition. " + \
+                    "However, in cases when data on infection origin were not available (as in many hospitals in LMICs), the above definition would be calculated based on admission date and specimen collection date (with cutoff of 2 calendar days) and used to classify infections as community−origin or hospital−origin." #3.1 3104
     method_page5_5_3 = "<b>" + "De−duplication:" + "</b>"
     method_page5_5_4 = "When more than one blood culture was collected during patient management, duplicated findings of the same patient were excluded (de−duplicated). " + \
                     "Only one result was reported for each patient per sample type (blood) and surveyed organisms (listed above)." + \

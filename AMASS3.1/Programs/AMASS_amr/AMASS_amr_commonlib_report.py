@@ -1,10 +1,11 @@
 #***-------------------------------------------------------------------------------------------------***#
-#*** AutoMated tool for Antimicrobial resistance Surveillance System version 3.0 (AMASS version 3.0) ***#
+#*** AutoMated tool for Antimicrobial resistance Surveillance System version 3.1 (AMASS version 3.1) ***#
 #***-------------------------------------------------------------------------------------------------***#
 # Aim: to enable hospitals with microbiology data available in electronic formats
 # to analyze their own data and generate AMR surveillance reports, Supplementary data indicators reports, and Data verification logfile reports systematically.
 
-# Created on 20th April 2022 (V2.0)
+# Created on 20th April 2022
+# Last update on: 15 JUL 2025 #3.1 3104
 import math as m
 import gc
 import pandas as pd #for creating and manipulating dataframe
@@ -414,7 +415,7 @@ def prepare_section1_table_for_reportlab(df, checkpoint_hosp):
     else:
         df["Number_of_hospital_records_in_hospital_admission_data_file"] = ""
         df.loc[df["Month"]=="Total","Number_of_hospital_records_in_hospital_admission_data_file"] = "NA"
-    df = df.rename(columns={"Number_of_specimen_in_microbiology_data_file":"Number of specimen\ndata records in\nmicrobiology_data file", "Number_of_hospital_records_in_hospital_admission_data_file":"Number of admission\ndata records in\nhospital_admission_data file"})
+    df = df.rename(columns={"Number_of_specimen_in_microbiology_data_file":"Number of specimen\ndata records in\nmicrobiology data file", "Number_of_hospital_records_in_hospital_admission_data_file":"Number of admission\ndata records in\nhospital admission data file"}) #3.1 3104
     
     lst_col = [list(df.columns)]
     lst_df = df.values.tolist()
