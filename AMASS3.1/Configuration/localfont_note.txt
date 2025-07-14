@@ -1,0 +1,2 @@
+Local font
+- Thai : Google font : "Noto Serif Thai" - The font is under Open font license (https://fonts.google.com/noto/specimen/Noto+Serif+Thai/about?preview.text=This%20is%20%E0%B9%84%E0%B8%97%E0%B8%A2&query=Thai&sort=alpha)

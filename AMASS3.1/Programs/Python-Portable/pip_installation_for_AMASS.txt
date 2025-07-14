@@ -1,0 +1,9 @@
+pip install --force-reinstall -v "pandas==1.4.3"
+pip install reportlab
+pip install psutil
+pip install xlsx2csv
+pip install matplotlib
+pip install seaborn
+pip install --force-reinstall -v "scipy==1.9.1"
+pip install openpyxl
+
